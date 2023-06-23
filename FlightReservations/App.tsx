@@ -12,16 +12,16 @@ export default function App() {
   return (
     <View>
       <Title title="Sign Up" />
-      {/* <Checkbox
+      <Checkbox
         label="I agree to the Terms and Privacy Policy"
         checked={false}
         onChange={handleCheckboxChange}
-      /> */}
-      {/* <Checkbox
+      />
+      <Checkbox
         label="Subscribe for select product updates"
         checked={false}
         onChange={handleCheckboxChange}
-      /> */}
+      />
       {/* <Form /> */}
       <Button title="Sign up" />
       <Text style={{textAlign: 'center', marginVertical: 30}}>or</Text>

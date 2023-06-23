@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
-import {View, Text} from 'react-native';
-import {CheckBox} from 'react-native-elements';
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
+import { CheckBox } from "@rneui/base";
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { Icon } from "@rneui/base"
 
 interface CheckboxProps {
   label: string;
@@ -23,8 +24,14 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   };
   return (
     <View>
-      <CheckBox title={label} checked={checked} onPress={toggleCheckbox} />
-      <Text>{checked ? 'Checked' : 'Unchecked'}</Text>
+
+      <CheckBox title={label} checked={checked} onPress={toggleCheckbox} iconType="material-community"
+        checkedIcon="checkbox-outline"
+        uncheckedIcon={'checkbox-blank-outline'} />
     </View>
   );
 };
+
+
+
+

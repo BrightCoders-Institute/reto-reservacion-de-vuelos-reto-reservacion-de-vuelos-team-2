@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import {View, TextInput, Button, Text} from 'react-native';
+import {View, TextInput, Text} from 'react-native';
 import { styles } from './FormStyles';
+import { Button } from '../Button/Button';
 
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import { Title } from '../Title/Title';
 
 const data = {
   FormData: [
@@ -31,7 +33,7 @@ interface FormDataInterface {
 }
 
 const validatSchema = Yup.object().shape({
-  passwordLength: Yup.string()
+  password: Yup.string()
     .min(4, 'Should be min of 4 characters')
     .max(16, 'Should be max of 16 characters')
     .required('Password invalid'),
@@ -60,6 +62,7 @@ export const Form = () => {
          /* and other goodies */
        }) => (
         <>
+          <Title title='First Name' isSubTitle={true}/>
           <TextInput
             style={styles.input}
             onChangeText={handleChange('firstName')}
@@ -67,40 +70,39 @@ export const Form = () => {
             keyboardType="default"
             />
           {touched.firstName && errors.firstName && (
-              <Text style={styles.errorText}>
+            <Text style={styles.errorText}>
                 {errors.firstName}
               </Text>
           )}
-          <Button title='submit' onPress={handleSubmit}/>
+          <Title title='Email' isSubTitle={true}/>
+          <TextInput
+            style={styles.input}
+            onChangeText={handleChange('email')}
+            value={values.email}
+            keyboardType="email-address"
+          />
+          {touched.email && errors.email && (
+            <Text style={styles.errorText}>
+                {errors.email}
+              </Text>
+          )}
+          <Title title='Password' isSubTitle={true}/>
+          <TextInput
+            style={styles.input}
+            onChangeText={handleChange('password')}
+            value={values.password}
+            keyboardType="default"
+            secureTextEntry={true}
+          />
+          {touched.password && errors.password && (
+            <Text style={styles.errorText}>
+                {errors.password}
+              </Text>
+          )}
+          <Button title="Sign up" onPress={handleSubmit}/>
         </>
        )}
      </Formik>
-      {/* <TextInput
-        style={styles.input}
-        onChangeText={(text) => setformData({...formData, email: text})}
-        value={formData.email}
-        keyboardType="email-address"
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={(text) => setformData({...formData, password: text})}
-        value={formData.password}
-        keyboardType="default"
-        secureTextEntry={true}
-      /> */}
     </View>
   );
 };
-
-
-// {data.FormData.map((item, index) => (
-//   <View>
-//     <Text>{item.SubTitle}</Text>
-//     <Input
-//       kboardType={item.kbordType}
-//       isPassword={item.isPassword}
-//       key={index}
-      
-//     />
-//   </View>
-// ))}

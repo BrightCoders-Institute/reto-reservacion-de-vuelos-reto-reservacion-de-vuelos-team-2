@@ -1,36 +1,13 @@
-import React, { useState } from 'react';
-import {View, TextInput, Text} from 'react-native';
+import React from 'react';
+import {View, Text} from 'react-native';
 import { styles } from './FormStyles';
 import { Button } from '../Button/Button';
 
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { Title } from '../Title/Title';
-
-const data = {
-  FormData: [
-    {
-      SubTitle: 'First Name',
-      isPassword: false,
-      kbordType: 'default',
-    },
-    {
-      SubTitle: 'Email',
-      isPassword: false,
-      kbordType: 'default',
-    },
-    {
-      SubTitle: 'Password',
-      isPassword: true,
-      kbordType: 'default',
-    },
-  ],
-};
-interface FormDataInterface {
-  name: string;
-  email: string;
-  password: string;
-}
+import {SubTitle} from '../SubTitle/SubTitle';
+import { Input } from '../Input/Input';
 
 const validatSchema = Yup.object().shape({
   password: Yup.string()
@@ -45,7 +22,6 @@ const validatSchema = Yup.object().shape({
 });
 
 export const Form = () => {
-  const [formData, setformData] = useState<FormDataInterface>({name: '', email: '', password: ''})
   return (
     <View>
       <Formik
@@ -59,46 +35,55 @@ export const Form = () => {
          touched,
          handleChange,
          handleSubmit,
+
          /* and other goodies */
        }) => (
         <>
-          <Title title='First Name' isSubTitle={true}/>
-          <TextInput
-            style={styles.input}
-            onChangeText={handleChange('firstName')}
+          <View style={styles.subTitleContainer}>
+            <SubTitle isRequired={false}>
+              <Title title='First Name' isSubTitle={true}/>
+            </SubTitle>
+            {touched.firstName && errors.firstName && (
+              <Text style={styles.errorText}>
+                  {errors.firstName}
+                </Text>
+              )}
+          </View>
+          <Input 
+            onChange={handleChange('firstName')}
             value={values.firstName}
-            keyboardType="default"
-            />
-          {touched.firstName && errors.firstName && (
-            <Text style={styles.errorText}>
-                {errors.firstName}
-              </Text>
-          )}
-          <Title title='Email' isSubTitle={true}/>
-          <TextInput
-            style={styles.input}
-            onChangeText={handleChange('email')}
+            kboardType='default'
+          />
+          <View style={styles.subTitleContainer}>
+            <SubTitle>
+              <Title title='Email' isSubTitle={true}/>
+            </SubTitle>
+            {touched.email && errors.email && (
+              <Text style={styles.errorText}>
+                  {errors.email}
+                </Text>
+            )}
+          </View>
+          <Input 
+            onChange={handleChange('email')}
             value={values.email}
-            keyboardType="email-address"
+            kboardType='email-address'
           />
-          {touched.email && errors.email && (
-            <Text style={styles.errorText}>
-                {errors.email}
+          <View style={styles.subTitleContainer}>
+            <SubTitle>
+              <Title title='Password' isSubTitle={true}/>
+            </SubTitle>
+            {touched.password && errors.password && (
+              <Text style={styles.errorText}>
+                  {errors.password}
               </Text>
-          )}
-          <Title title='Password' isSubTitle={true}/>
-          <TextInput
-            style={styles.input}
-            onChangeText={handleChange('password')}
+            )}
+          </View>
+          <Input 
+            onChange={handleChange('password')}
             value={values.password}
-            keyboardType="default"
-            secureTextEntry={true}
+            kboardType='default'
           />
-          {touched.password && errors.password && (
-            <Text style={styles.errorText}>
-                {errors.password}
-              </Text>
-          )}
           <Button title="Sign up" onPress={handleSubmit}/>
         </>
        )}

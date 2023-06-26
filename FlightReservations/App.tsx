@@ -23,7 +23,7 @@ export default function App() {
         onChange={handleCheckboxChange}
       />
       {/* <Form /> */}
-      <Button title="Sign up" />
+      <Form />
       <Text style={{textAlign: 'center', marginVertical: 30}}>or</Text>
       <Button title="Sign up with Google" />
       <Text style={{textAlign: 'center', marginVertical: 30}}>

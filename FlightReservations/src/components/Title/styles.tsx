@@ -9,5 +9,12 @@ export const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: '900',
     color: '#5974F5',
+    padding: wp('5%'),
   },
+  subTitle: {
+    fontSize: 20,
+    fontWeight: '900',
+    color: '#949494',
+    marginLeft: 12,
+  }
 });

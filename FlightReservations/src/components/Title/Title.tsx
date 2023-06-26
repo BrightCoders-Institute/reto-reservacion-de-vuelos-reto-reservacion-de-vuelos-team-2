@@ -1,15 +1,14 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import {styles} from './styles';
+import { styles } from './styles';
 
 interface Props {
   title: string;
+  isSubTitle?: boolean;
 }
 
-export const Title = (props: Props) => {
+export const Title = ({title, isSubTitle = false}: Props) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.titleText}>{props.title}</Text>
-    </View>
+      <Text style={isSubTitle ? styles.subTitle : styles.titleText}>{title}</Text>
   );
 };

@@ -12,6 +12,8 @@ export default function App() {
   return (
     <View>
       <Title title="Sign Up" />
+      
+      <Form />
       <Checkbox
         label="I agree to the Terms and Privacy Policy"
         checked={false}
@@ -22,13 +24,12 @@ export default function App() {
         checked={false}
         onChange={handleCheckboxChange}
       />
-      {/* <Form /> */}
-      <Form />
       <Text style={{textAlign: 'center', marginVertical: 30}}>or</Text>
       <Button title="Sign up with Google" />
       <Text style={{textAlign: 'center', marginVertical: 30}}>
         Alredy have an account? Log in
       </Text>
+      
     </View>
   );
 }

@@ -24,7 +24,6 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   };
   return (
     <View>
-
       <CheckBox title={label} checked={checked} onPress={toggleCheckbox} iconType="material-community"
         checkedIcon="checkbox-outline"
         uncheckedIcon={'checkbox-blank-outline'} />

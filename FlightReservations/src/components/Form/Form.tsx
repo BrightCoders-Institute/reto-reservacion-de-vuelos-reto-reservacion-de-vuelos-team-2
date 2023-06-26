@@ -8,6 +8,7 @@ import { Formik } from 'formik';
 import { Title } from '../Title/Title';
 import {SubTitle} from '../SubTitle/SubTitle';
 import { Input } from '../Input/Input';
+import { Checkbox} from '../Checkbox/Checkbox'
 
 const validatSchema = Yup.object().shape({
   password: Yup.string()
@@ -22,6 +23,9 @@ const validatSchema = Yup.object().shape({
 });
 
 export const Form = () => {
+  const handleCheckboxChange = (checked: boolean) => {
+    console.log('Checkbox checked:', checked);
+  };
   return (
     <View>
       <Formik
@@ -84,10 +88,23 @@ export const Form = () => {
             value={values.password}
             kboardType='default'
           />
+                    <Checkbox
+label="I agree to the Terms and Privacy Policy"
+checked={false}
+onChange={handleCheckboxChange}
+/>
+<Checkbox
+label="Subscribe for select product updates"
+checked={false}
+onChange={handleCheckboxChange}
+/>
           <Button title="Sign up" onPress={handleSubmit}/>
+
         </>
+        
        )}
      </Formik>
     </View>
   );
 };
+

@@ -4,12 +4,13 @@ import { styles } from './FormStyles';
 import { Button } from '../Button/Button';
 
 import * as Yup from 'yup';
-import { Formik } from 'formik';
+import { Formik, useFormik } from 'formik';
 import { Title } from '../Title/Title';
 import {SubTitle} from '../SubTitle/SubTitle';
 import { Input } from '../Input/Input';
 import { Checkbox} from '../Checkbox/Checkbox'
 
+//const formik = useFormik({})
 const validatSchema = Yup.object().shape({
   password: Yup.string()
     .min(4, 'Should be min of 4 characters')
@@ -17,9 +18,11 @@ const validatSchema = Yup.object().shape({
     .required('Password invalid'),
   firstName: Yup.string()
     .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
+    .max(50, 'Too Long!'),
+  email: Yup.string()
+    .email('Invalid email')
     .required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
+  checkbox: Yup.boolean().required()
 });
 
 export const Form = () => {
@@ -29,9 +32,10 @@ export const Form = () => {
   return (
     <View>
       <Formik
-       initialValues={{ email: '', password: '', firstName: ''}}
+      initialValues={{ email: '', password: '', firstName: '', checkbox: false}}
        validationSchema={validatSchema}
-       onSubmit={values => console.log(values)}
+       onSubmit={values => console.log("value", values)}
+
      >
        {({
          values,
@@ -39,10 +43,13 @@ export const Form = () => {
          touched,
          handleChange,
          handleSubmit,
+         isValid,
+         isValidating
 
          /* and other goodies */
        }) => (
         <>
+        {console.log("isValidating",isValid)}
           <View style={styles.subTitleContainer}>
             <SubTitle isRequired={false}>
               <Title title='First Name' isSubTitle={true}/>
@@ -50,8 +57,8 @@ export const Form = () => {
             {touched.firstName && errors.firstName && (
               <Text style={styles.errorText}>
                   {errors.firstName}
-                </Text>
-              )}
+              </Text>
+            )}
           </View>
           <Input 
             onChange={handleChange('firstName')}
@@ -87,18 +94,23 @@ export const Form = () => {
             onChange={handleChange('password')}
             value={values.password}
             kboardType='default'
+            isPassword={true}
           />
-                    <Checkbox
-label="I agree to the Terms and Privacy Policy"
-checked={false}
-onChange={handleCheckboxChange}
-/>
-<Checkbox
-label="Subscribe for select product updates"
-checked={false}
-onChange={handleCheckboxChange}
-/>
-          <Button title="Sign up" onPress={handleSubmit}/>
+          <View style={styles.subTitleContainer}>
+            <Checkbox
+              label="I agree to the Terms and Privacy Policy"
+              checked={values.checkbox}
+              onChange={handleCheckboxChange}
+            />
+            <Text style={styles.supScript}>*</Text>
+          </View>
+          <Checkbox
+            label="Subscribe for select product updates"
+            checked={false}
+            onChange={handleCheckboxChange}
+          />
+          
+          <Button title="Sign up" onPress={handleSubmit} isDisabled={isValid}/>
 
         </>
         

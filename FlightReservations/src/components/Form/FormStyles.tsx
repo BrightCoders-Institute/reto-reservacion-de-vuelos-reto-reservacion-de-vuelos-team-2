@@ -9,4 +9,11 @@ export const styles = StyleSheet.create({
   subTitleContainer: {
     flexDirection: 'row'
   },
+	supScript:{
+		lineHeight: 35,
+    fontSize: 20,
+		fontWeight: '600',
+		color: 'red',
+    marginLeft: -25
+	},
 })

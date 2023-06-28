@@ -3,7 +3,6 @@ import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 export const styles = StyleSheet.create({
   btn__container: {
-    backgroundColor: '#5C6EF8',
     padding: wp('3%'),
     marginHorizontal: wp('5%'),
     borderRadius: 10,
@@ -14,4 +13,10 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
     textAlign: 'center',
   },
+  btn__disabled:{
+    backgroundColor: 'gray'
+  },
+  btn__active: {
+    backgroundColor: '#5C6EF8',
+  }
 });

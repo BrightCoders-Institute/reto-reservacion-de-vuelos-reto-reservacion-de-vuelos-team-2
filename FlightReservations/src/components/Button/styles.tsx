@@ -18,5 +18,14 @@ export const styles = StyleSheet.create({
   },
   btn__active: {
     backgroundColor: '#5C6EF8',
+  },
+  icon: {
+    width: '8%',
+    height: '100%',
+    marginRight: '5%'
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'center'
   }
 });

@@ -96,19 +96,21 @@ export const Form = () => {
             kboardType='default'
             isPassword={true}
           />
-          <View style={styles.subTitleContainer}>
+          <View style={styles.margin}>
+            <View style={styles.subTitleContainer}>
+              <Checkbox
+                label="I agree to the Terms and Privacy Policy"
+                checked={values.checkbox}
+                onChange={handleCheckboxChange}
+                />
+              <Text style={styles.supScript}>*</Text>
+            </View>
             <Checkbox
-              label="I agree to the Terms and Privacy Policy"
-              checked={values.checkbox}
+              label="Subscribe for select product updates"
+              checked={false}
               onChange={handleCheckboxChange}
-            />
-            <Text style={styles.supScript}>*</Text>
+              />
           </View>
-          <Checkbox
-            label="Subscribe for select product updates"
-            checked={false}
-            onChange={handleCheckboxChange}
-          />
           
           <Button title="Sign up" onPress={handleSubmit} isDisabled={isValid}/>
 

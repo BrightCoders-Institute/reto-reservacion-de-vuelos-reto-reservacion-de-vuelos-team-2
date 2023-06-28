@@ -16,4 +16,8 @@ export const styles = StyleSheet.create({
 		color: 'red',
     marginLeft: -25
 	},
+  margin: {
+    marginBottom: 25,
+    marginTop: 15
+  }
 })

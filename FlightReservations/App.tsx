@@ -4,7 +4,7 @@ import {Title} from './src/components/Title/Title';
 import {Checkbox} from './src/components/Checkbox/Checkbox';
 import {Button} from './src/components/Button/Button';
 import {Form} from './src/components/Form/Form';
-import Register from './src/screens/Register';
+import Register from './src/screens/Register/Register';
 
 export default function App() {
 

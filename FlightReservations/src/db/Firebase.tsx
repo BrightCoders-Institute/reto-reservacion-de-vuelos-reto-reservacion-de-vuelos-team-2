@@ -1,6 +1,7 @@
 import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
-const readData = () => {
+export const readData = () => {
   firestore()
     .collection('Users')
     .get()
@@ -13,4 +14,27 @@ const readData = () => {
     });
 };
 
-export default readData;
+
+export const registeUserAndSignIn = (emil, password) => {
+
+  auth()
+    .createUserWithEmailAndPassword(emil, password)
+    .then((item) => {
+      console.log('User account created & signed in!');
+      console.log('ITEM', item)
+      console.log('item.additionalUserInfo', item.additionalUserInfo)
+      console.log('item.user', item.user)
+    })
+    .catch(error => {
+      if (error.code === 'auth/email-already-in-use') {
+        console.log('That email address is already in use!');
+      }
+  
+      if (error.code === 'auth/invalid-email') {
+        console.log('That email address is invalid!');
+      }
+  
+      console.error(error);
+    });
+}
+

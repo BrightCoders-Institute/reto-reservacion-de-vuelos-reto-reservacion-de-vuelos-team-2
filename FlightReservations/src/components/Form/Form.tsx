@@ -27,7 +27,6 @@ const validatSchema = Yup.object().shape({
 
 export const Form = () => {
   const handleCheckboxChange = (checked: boolean) => {
-    console.log('Checkbox checked:', checked);
   };
   return (
     <View>
@@ -43,13 +42,11 @@ export const Form = () => {
          touched,
          handleChange,
          handleSubmit,
-         isValid,
-         isValidating
+         isValid
 
          /* and other goodies */
        }) => (
         <>
-        {console.log("isValidating",isValid)}
           <View style={styles.subTitleContainer}>
             <SubTitle isRequired={false}>
               <Title title='First Name' isSubTitle={true}/>

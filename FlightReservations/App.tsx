@@ -1,16 +1,15 @@
-import {View, Text} from 'react-native';
+import 'react-native-gesture-handler';
+import {NavigationContainer} from '@react-navigation/native';
+import Navigation from './src/components/Navigation/Navigation';
 import React from 'react';
-import {Title} from './src/components/Title/Title';
-import {Checkbox} from './src/components/Checkbox/Checkbox';
-import {Button} from './src/components/Button/Button';
-import {Form} from './src/components/Form/Form';
-import Register from './src/screens/Register/Register';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 export default function App() {
-
   return (
-    <View>
-      <Register/>
-    </View>
+    <SafeAreaView style={{flex: 1}}>
+      <NavigationContainer>
+        <Navigation />
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }

@@ -14,7 +14,7 @@ const Login = () => {
 
       <Text style={styles.text}>or</Text>
 
-      <Button title="Log in with Google"/>
+      <Button title="Log in with Google" isGoogle={true}/>
 
       <View style={styles.containerLogin}>
         <Text>

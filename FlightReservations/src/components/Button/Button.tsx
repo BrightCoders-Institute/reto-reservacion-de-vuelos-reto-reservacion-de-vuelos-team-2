@@ -5,11 +5,10 @@ import { styles } from './styles';
 
 interface Props {
   title: string;
-  onPress?: () => void;
+  onPress?: () => any;
   isDisabled?: boolean;
   isGoogle?: boolean;
 }
-
 
 export const Button = (props: Props) => {
   const google_img = '../../assets/google-logo.png'

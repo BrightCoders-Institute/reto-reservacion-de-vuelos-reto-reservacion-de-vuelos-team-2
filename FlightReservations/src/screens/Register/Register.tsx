@@ -4,19 +4,16 @@ import { Title } from '../../components/Title/Title'
 import { Form } from '../../components/Form/Form'
 import { Button } from '../../components/Button/Button'
 import { styles } from './RegisterStyles';
-import { readData,registeUserAndSignIn } from '../../db/Firebase';
+import { googleAuth } from '../../auth/SignInWithGoogle';
 
 const Register = () => {
-	//registeUserAndSignIn('jane.doe@example.com','SuperSecretPassword!')
-	readData()
-	
 	return (
 	<>
 		<Title title="Sign Up" />
       
       <Form />
       <Text style={styles.text}>or</Text>
-      <Button title="Sign up with Google" isGoogle={true}/>
+      <Button title="Sign up with Google" isGoogle={true} onPress={googleAuth}/>
 			<View style={styles.containerLogin}>
 				<Text>
 					Alredy have an account? 

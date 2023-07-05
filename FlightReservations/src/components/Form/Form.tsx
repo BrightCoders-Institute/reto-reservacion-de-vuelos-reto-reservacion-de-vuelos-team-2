@@ -9,8 +9,8 @@ import { Title } from '../Title/Title';
 import {SubTitle} from '../SubTitle/SubTitle';
 import { Input } from '../Input/Input';
 import { Checkbox} from '../Checkbox/Checkbox'
+import { signup } from '../../auth/SignUp';
 
-//const formik = useFormik({})
 const validatSchema = Yup.object().shape({
   password: Yup.string()
     .min(4, 'Should be min of 4 characters')
@@ -32,8 +32,14 @@ export const Form = () => {
     <View>
       <Formik
       initialValues={{ email: '', password: '', firstName: '', checkbox: false}}
-       validationSchema={validatSchema}
-       onSubmit={values => console.log("value", values)}
+      validationSchema={validatSchema}
+      onSubmit={values => {
+        signup({
+          email: values.email,
+          password: values.password,
+          name: values.firstName
+        })
+      }}
 
      >
        {({
@@ -42,7 +48,7 @@ export const Form = () => {
          touched,
          handleChange,
          handleSubmit,
-         isValid
+         dirty
 
          /* and other goodies */
        }) => (
@@ -108,8 +114,7 @@ export const Form = () => {
               onChange={handleCheckboxChange}
               />
           </View>
-          
-          <Button title="Sign up" onPress={handleSubmit} isDisabled={isValid}/>
+          <Button title="Sign up" onPress={handleSubmit} isDisabled={!dirty}/>
 
         </>
         

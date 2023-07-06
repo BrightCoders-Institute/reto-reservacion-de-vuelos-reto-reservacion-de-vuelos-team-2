@@ -15,10 +15,11 @@ export const styles = StyleSheet.create({
     padding: 10,
     borderColor: 'blue',
   },
-  overlay:{position:'absolute',
-	right:20,
-  bottom: 20,
-	borderRadius: 10,
-	paddingHorizontal: 10,
-	}
+  overlay: {
+    position: 'absolute',
+    right: 20,
+    bottom: 20,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+  },
 });

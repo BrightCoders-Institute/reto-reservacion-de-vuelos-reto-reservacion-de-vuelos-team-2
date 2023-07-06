@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { Title } from '../../components/Title/Title';
-import { Form } from '../../components/Form/LoginForm';
-import { Button } from '../../components/Button/Button';
-import { styles } from './LoginStyles';
+import {Text, TouchableOpacity, View} from 'react-native';
+import {Title} from '../../components/Title/Title';
+import {Form} from '../../components/Form/LoginForm';
+import {Button} from '../../components/Button/Button';
+import {styles} from './LoginStyles';
 
 const Login = () => {
   return (
@@ -14,12 +14,10 @@ const Login = () => {
 
       <Text style={styles.text}>or</Text>
 
-      <Button title="Log in with Google" isGoogle={true}/>
+      <Button title="Log in with Google" isGoogle={true} />
 
       <View style={styles.containerLogin}>
-        <Text>
-          Don't have an account?
-        </Text>
+        <Text>Don't have an account?</Text>
         <TouchableOpacity activeOpacity={0.6}>
           <Text style={styles.textLogin}>Sign up</Text>
         </TouchableOpacity>

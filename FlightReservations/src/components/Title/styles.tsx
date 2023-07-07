@@ -16,5 +16,5 @@ export const styles = StyleSheet.create({
     fontWeight: '900',
     color: '#949494',
     marginLeft: 12,
-  }
+  },
 });

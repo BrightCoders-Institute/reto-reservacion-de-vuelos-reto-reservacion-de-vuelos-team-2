@@ -13,8 +13,8 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
     textAlign: 'center',
   },
-  btn__disabled:{
-    backgroundColor: 'gray'
+  btn__disabled: {
+    backgroundColor: 'gray',
   },
   btn__active: {
     backgroundColor: '#5C6EF8',
@@ -22,10 +22,10 @@ export const styles = StyleSheet.create({
   icon: {
     width: '8%',
     height: '100%',
-    marginRight: '5%'
+    marginRight: '5%',
   },
   row: {
     flexDirection: 'row',
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import { styles } from './styles';
+import {styles} from './styles';
 
 interface Props {
   title: string;
@@ -9,6 +9,6 @@ interface Props {
 
 export const Title = ({title, isSubTitle = false}: Props) => {
   return (
-      <Text style={isSubTitle ? styles.subTitle : styles.titleText}>{title}</Text>
+    <Text style={isSubTitle ? styles.subTitle : styles.titleText}>{title}</Text>
   );
 };

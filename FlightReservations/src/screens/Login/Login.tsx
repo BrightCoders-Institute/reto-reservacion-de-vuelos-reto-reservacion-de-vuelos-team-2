@@ -1,10 +1,29 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
+import {Title} from '../../components/Title/Title';
+import {Form} from '../../components/Form/LoginForm';
+import {Button} from '../../components/Button/Button';
+import {styles} from './LoginStyles';
 
-export const Login = () => {
+const Login = () => {
   return (
-    <View>
-      <Text>Login</Text>
-    </View>
+    <>
+      <Title title="Log In" />
+
+      <Form />
+
+      <Text style={styles.text}>or</Text>
+
+      <Button title="Log in with Google" isGoogle={true} />
+
+      <View style={styles.containerLogin}>
+        <Text>Don't have an account?</Text>
+        <TouchableOpacity activeOpacity={0.6}>
+          <Text style={styles.textLogin}>Sign up</Text>
+        </TouchableOpacity>
+      </View>
+    </>
   );
 };
+
+export default Login;

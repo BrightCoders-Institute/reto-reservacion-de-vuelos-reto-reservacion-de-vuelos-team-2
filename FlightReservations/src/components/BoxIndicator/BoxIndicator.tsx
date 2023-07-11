@@ -16,13 +16,10 @@ export const BoxIndicator = () => {
   const handleSignUpPress = () => {
     setIsLoading(true);
 
-    // Simulate an asynchronous task (e.g., API request)
-    // Replace this with your actual sign up logic
     setTimeout(() => {
       setIsLoading(false);
       setIsSuccess(true);
 
-      // Reset success state and close the modal after a certain delay
       setTimeout(() => {
         setIsSuccess(false);
       }, 2000);

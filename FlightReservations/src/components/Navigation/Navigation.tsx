@@ -10,11 +10,7 @@ const Stack = createStackNavigator();
 function Navigation() {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Register"
-        component={Register}
-        // options={{headerShown: false}}
-      />
+      <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Login" component={Login} options={{title: ''}} />
       <Stack.Screen
         name="MyFlight"

@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
-import { TextInput, View, KeyboardTypeOptions, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import {
+  TextInput,
+  View,
+  KeyboardTypeOptions,
+  TouchableOpacity,
+} from 'react-native';
 import {styles} from './InputStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -8,11 +13,16 @@ interface props {
   isPassword?: boolean;
   value: string;
   onChange: (text: string) => void;
-};
+}
 
-export const Input = ({kboardType, isPassword = false, onChange, value}: props) => {
+export const Input = ({
+  kboardType,
+  isPassword = false,
+  onChange,
+  value,
+}: props) => {
   const [isFocus, setIsFocus] = useState<boolean>(false);
-  const [hidePasswordValue, setHidePasswordValue] = useState<boolean>(true)
+  const [hidePasswordValue, setHidePasswordValue] = useState<boolean>(true);
   const handleFocus = () => {
     setIsFocus(true);
   };
@@ -21,12 +31,12 @@ export const Input = ({kboardType, isPassword = false, onChange, value}: props) 
   };
 
   const handleIcon = () => {
-    if(hidePasswordValue === true){
-      setHidePasswordValue(false)
+    if (hidePasswordValue === true) {
+      setHidePasswordValue(false);
     } else {
-      setHidePasswordValue(true)
+      setHidePasswordValue(true);
     }
-  }
+  };
   return (
     <View>
       <TextInput
@@ -38,13 +48,11 @@ export const Input = ({kboardType, isPassword = false, onChange, value}: props) 
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
-      {
-        isPassword && (
-          <TouchableOpacity onPressIn={handleIcon}>
-            <Icon name="eye" size={25} color='gray' style={styles.overlay}/>
-          </TouchableOpacity>
-        )
-      }
+      {isPassword && (
+        <TouchableOpacity onPressIn={handleIcon}>
+          <Icon name="eye" size={25} color="gray" style={styles.overlay} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

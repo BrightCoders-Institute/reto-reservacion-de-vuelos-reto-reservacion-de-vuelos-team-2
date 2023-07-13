@@ -4,8 +4,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {styles} from './styleCard';
 
 interface props {
-  estateOrigin: string;
-  estateDestination: string;
+  stateOrigin: string;
+  stateDestination: string;
   countryOrigin: string;
   countryDestination: string;
   date: string;
@@ -13,8 +13,8 @@ interface props {
 }
 
 export const Card = ({
-  estateOrigin,
-  estateDestination,
+  stateOrigin,
+  stateDestination,
   countryOrigin,
   countryDestination,
   date,
@@ -23,9 +23,9 @@ export const Card = ({
   return (
     <View style={styles.container}>
       <View style={styles.containerTitle}>
-        <Text style={styles.primaryText}>{estateOrigin}</Text>
+        <Text style={styles.primaryText}>{stateOrigin}</Text>
         <Icon name="airplane-landing" size={30} color="#5974F5" />
-        <Text style={styles.primaryText}>{estateDestination}</Text>
+        <Text style={styles.primaryText}>{stateDestination}</Text>
       </View>
       <View style={styles.containerSubTitle}>
         <Text style={styles.SecondaryText}>{countryOrigin}</Text>

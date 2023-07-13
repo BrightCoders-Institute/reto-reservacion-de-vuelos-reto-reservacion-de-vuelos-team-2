@@ -10,13 +10,9 @@ const Stack = createStackNavigator();
 function Navigation() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="Login" component={Login} options={{title: ''}} />
-      <Stack.Screen
-        name="MyFlight"
-        component={MyFlight}
-        options={{headerShown: false}}
-      />
+      {/* <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="Login" component={Login} options={{title: ''}} /> */}
+      <Stack.Screen name="MyFlight" component={MyFlight} />
       <Stack.Screen
         name="Booking"
         component={Booking}

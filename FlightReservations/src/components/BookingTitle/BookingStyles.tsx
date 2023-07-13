@@ -3,18 +3,15 @@ import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 export const styles = StyleSheet.create({
   container: {
-    padding: wp('5%'),
+    paddingBottom: wp('5%'),
+    wordWrap: 'break-word',
+    width: wp('90%'),
   },
-  titleText: {
-    fontSize: 25,
+  title: {
+    fontSize: 40,
     fontWeight: '900',
-    color: 'black',
+    color: '#000',
     padding: wp('5%'),
-  },
-  subTitle: {
-    fontSize: 20,
-    fontWeight: '900',
-    color: '#949494',
-    marginLeft: 12,
+    lineHeight: 50,
   },
 });

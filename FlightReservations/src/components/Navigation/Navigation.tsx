@@ -11,9 +11,9 @@ function Navigation() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Register"
-        component={Register}
-        // options={{headerShown: false}}
+        name="Booking"
+        component={Booking}
+        options={{headerShown: false}}
       />
       <Stack.Screen name="Login" component={Login} options={{title: ''}} />
       <Stack.Screen
@@ -22,8 +22,8 @@ function Navigation() {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Booking"
-        component={Booking}
+        name="Register"
+        component={Register}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

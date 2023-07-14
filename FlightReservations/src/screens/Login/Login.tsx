@@ -5,7 +5,7 @@ import {Form} from '../../components/Form/LoginForm';
 import {Button} from '../../components/Button/Button';
 import {styles} from './LoginStyles';
 
-const Login = () => {
+export const Login = () => {
   return (
     <>
       <Title title="Log In" />

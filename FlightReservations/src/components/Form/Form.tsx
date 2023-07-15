@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {styles} from './FormStyles';
 import {Button} from '../Button/Button';
+import {useNavigation} from '@react-navigation/native';
 
 import * as Yup from 'yup';
 import {Formik, useFormik} from 'formik';
@@ -22,6 +23,7 @@ const validatSchema = Yup.object().shape({
 });
 
 export const Form = () => {
+  const navigation = useNavigation();
   const handleCheckboxChange = (checked: boolean) => {};
   return (
     <View>
@@ -39,6 +41,8 @@ export const Form = () => {
             password: values.password,
             name: values.firstName,
           });
+
+          navigation.navigate('MyFlight');
         }}>
         {({
           values,

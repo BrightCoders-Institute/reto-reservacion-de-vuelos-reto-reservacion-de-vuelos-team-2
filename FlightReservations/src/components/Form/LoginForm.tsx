@@ -9,6 +9,8 @@ import {Title} from '../Title/Title';
 import {SubTitle} from '../SubTitle/SubTitle';
 import {Input} from '../Input/Input';
 
+import {useNavigation} from '@react-navigation/native';
+
 const validatSchema = Yup.object().shape({
   password: Yup.string().required('Password invalid'),
   email: Yup.string().email('Invalid email').required('Required'),
@@ -16,12 +18,16 @@ const validatSchema = Yup.object().shape({
 });
 
 export const Form = () => {
+  const navigation = useNavigation();
+
   return (
     <View>
       <Formik
         initialValues={{email: '', password: '', checkbox: false}}
         validationSchema={validatSchema}
-        onSubmit={values => console.log('value', values)}>
+        onSubmit={() => {
+          navigation.navigate('MyFlight');
+        }}>
         {({values, errors, touched, handleChange, handleSubmit, dirty}) => (
           <>
             <View style={styles.subTitleContainer}>
@@ -57,7 +63,7 @@ export const Form = () => {
               </View>
             </View>
 
-            <Button title="Log in" onPress={handleSubmit} isDisabled={dirty} />
+            <Button title="Log in" onPress={handleSubmit} isDisabled={!dirty} />
           </>
         )}
       </Formik>

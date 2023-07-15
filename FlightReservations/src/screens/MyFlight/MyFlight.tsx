@@ -3,6 +3,7 @@ import {FlatList, TouchableOpacity, StyleSheet} from 'react-native';
 import {Title} from '../../components/Title/Title';
 import {Card} from '../../components/Card/Card';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useNavigation} from '@react-navigation/native';
 
 const DATAEXAMPLE = [
   {
@@ -80,6 +81,8 @@ const DATAEXAMPLE = [
 ];
 
 export const MyFlight = () => {
+  const navigation = useNavigation();
+
   return (
     <>
       <Title title="My Flights" />
@@ -97,7 +100,10 @@ export const MyFlight = () => {
           />
         )}
       />
-      <TouchableOpacity style={styles.bntFloating} activeOpacity={0.8}>
+      <TouchableOpacity
+        style={styles.bntFloating}
+        activeOpacity={0.8}
+        onPress={() => navigation.navigate('Booking')}>
         <Icon name="plus" size={50} color="white" />
       </TouchableOpacity>
     </>

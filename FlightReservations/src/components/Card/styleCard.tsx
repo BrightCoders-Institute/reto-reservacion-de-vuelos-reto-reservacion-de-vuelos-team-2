@@ -3,18 +3,18 @@ import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 export const styles = StyleSheet.create({
   primaryText: {
-    fontSize: 20,
+    fontSize: 30,
     color: 'black',
-    fontWeight: 'bold',
+    fontWeight: '900',
     textTransform: 'uppercase',
   },
   SecondaryText: {
-    fontSize: 12,
+    fontSize: 18,
     color: '#898989',
     marginBottom: wp('2%'),
   },
   tertiaryText: {
-    fontSize: 12,
+    fontSize: 18,
     color: 'black',
     fontWeight: 'bold',
   },
@@ -40,8 +40,6 @@ export const styles = StyleSheet.create({
   },
   container: {
     marginHorizontal: wp('5%'),
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
     marginBottom: wp('4%'),
   },
 });

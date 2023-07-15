@@ -8,6 +8,8 @@ import {Formik} from 'formik';
 import {Title} from '../Title/Title';
 import {SubTitle} from '../SubTitle/SubTitle';
 import {Input} from '../Input/Input';
+import {NavigationType} from '../../../types/NavigationType';
+import {signIn} from '../../auth/SignIn';
 
 const validatSchema = Yup.object().shape({
   password: Yup.string().required('Password invalid'),
@@ -15,13 +17,21 @@ const validatSchema = Yup.object().shape({
   checkbox: Yup.boolean().required(),
 });
 
-export const Form = () => {
+export const LoginForm = ({navigation}: NavigationType) => {
   return (
     <View>
       <Formik
         initialValues={{email: '', password: '', checkbox: false}}
         validationSchema={validatSchema}
-        onSubmit={values => console.log('value', values)}>
+        onSubmit={async values => {
+          await signIn(
+            {
+              email: values.email,
+              password: values.password,
+            },
+            navigation,
+          );
+        }}>
         {({values, errors, touched, handleChange, handleSubmit, dirty}) => (
           <>
             <View style={styles.subTitleContainer}>
@@ -57,7 +67,7 @@ export const Form = () => {
               </View>
             </View>
 
-            <Button title="Log in" onPress={handleSubmit} isDisabled={dirty} />
+            <Button title="Log in" onPress={handleSubmit} isDisabled={!dirty} />
           </>
         )}
       </Formik>

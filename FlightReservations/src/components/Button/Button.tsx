@@ -4,7 +4,7 @@ import {styles} from './styles';
 
 interface Props {
   title: string;
-  onPress?: () => any;
+  onPress?: () => void;
   isDisabled?: boolean;
   isGoogle?: boolean;
 }

@@ -7,12 +7,12 @@ import {API_URL} from '@env';
 import {addUserInfo} from '../db/AddUserInfo';
 import firestore from '@react-native-firebase/firestore';
 import {Alert} from 'react-native';
-
+import {NavigationType} from '../../types/NavigationType';
 GoogleSignin.configure({
   webClientId: API_URL,
 });
-
-export const googleAuth = async () => {
+console.log(API_URL);
+export const googleAuth = async (navigation: NavigationType) => {
   try {
     const {idToken} = await GoogleSignin.signIn();
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
@@ -24,13 +24,13 @@ export const googleAuth = async () => {
       .get()
       .then(documentSnapshot => {
         if (documentSnapshot.exists) {
-          Alert.alert('Signin');
+          navigation.navigate('MyFlight');
         } else {
-          addUserInfo(user);
+          addUserInfo(user, navigation);
         }
       })
-      .catch(error => Alert.alert('error de usuario existe'));
-  } catch (error: unknown) {
+      .catch(error => Alert.alert('Error de Usuario'));
+  } catch (error) {
     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
       Alert.alert('Error', 'Login cancelled');
     } else if (error.code === statusCodes.IN_PROGRESS) {

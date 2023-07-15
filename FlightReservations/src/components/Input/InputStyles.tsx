@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderColor: '#b6b9be',
+    color: 'black',
   },
   onFocusInput: {
     height: 40,

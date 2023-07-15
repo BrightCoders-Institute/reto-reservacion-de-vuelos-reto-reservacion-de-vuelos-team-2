@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "702821027328",
+    "firebase_url": "https://flightreservations-87e58-default-rtdb.firebaseio.com",
     "project_id": "flightreservations-87e58",
     "storage_bucket": "flightreservations-87e58.appspot.com"
   },
@@ -22,7 +23,7 @@
           }
         },
         {
-          "client_id": "702821027328-kgl9dksqdni9hvh44usm76e7o68d89t2.apps.googleusercontent.com",
+          "client_id": "702821027328-6q3ksqa8rlg0p52vlrm07e7qucasv470.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -35,7 +36,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "702821027328-kgl9dksqdni9hvh44usm76e7o68d89t2.apps.googleusercontent.com",
+              "client_id": "702821027328-6q3ksqa8rlg0p52vlrm07e7qucasv470.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

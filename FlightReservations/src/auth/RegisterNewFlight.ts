@@ -24,12 +24,16 @@ export const registerFlight = async (props: NewFlight) => {
     user_id: user?.uid || '',
   };
 
-  firestore()
-    .collection('Flights')
-    .doc()
-    .set(flightData)
-    .then(() => {
-      Alert.alert('Flight added succesfully');
-    })
-    .catch(error => console.log(error));
+  try {
+    const formattedData = JSON.stringify(flightData);
+
+    await firestore()
+      .collection('Flights')
+      .doc()
+      .set(JSON.parse(formattedData));
+
+    Alert.alert('Flight added successfully');
+  } catch (error) {
+    console.log(error);
+  }
 };

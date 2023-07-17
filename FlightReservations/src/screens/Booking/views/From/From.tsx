@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {View, Text, TextInput} from 'react-native';
+import React from 'react';
+import {View} from 'react-native';
 import {Button} from '../../../../components/Button/Button';
 import {useNavigation} from '@react-navigation/native';
 import {BookingTitle} from '../../../../components/BookingTitle/BookingTitle';

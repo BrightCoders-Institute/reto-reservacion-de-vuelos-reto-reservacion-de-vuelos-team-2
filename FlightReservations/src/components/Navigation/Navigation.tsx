@@ -7,15 +7,31 @@ import {Register} from '../../screens/Register/Register';
 
 const Stack = createStackNavigator();
 
-function Navigation() {
+export const Navigation = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      initialRouteName="Login"
+      screenOptions={{
+        headerStyle: {
+          // *Para quietar sombra en header ANDROID
+          elevation: 0,
+          //  *Para quietar sombra en header IOS
+          shadowColor: 'transparent',
+        },
+        cardStyle: {
+          backgroundColor: 'white',
+        },
+      }}>
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="Booking"
         component={Booking}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="Login" component={Login} options={{title: ''}} />
       <Stack.Screen
         name="MyFlight"
         component={MyFlight}
@@ -28,6 +44,4 @@ function Navigation() {
       />
     </Stack.Navigator>
   );
-}
-
-export default Navigation;
+};

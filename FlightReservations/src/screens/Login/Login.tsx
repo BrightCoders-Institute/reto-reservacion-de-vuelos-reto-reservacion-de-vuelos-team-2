@@ -7,7 +7,7 @@ import {styles} from './LoginStyles';
 import {googleAuth} from '../../auth/SignInWithGoogle';
 import {NavigationType} from '../../../types/NavigationType';
 
-export const Login = ({navigation}: NavigationType) => {
+const Login = ({navigation}: NavigationType) => {
   return (
     <>
       <Title title="Log In" />
@@ -33,3 +33,5 @@ export const Login = ({navigation}: NavigationType) => {
     </>
   );
 };
+
+export default Login;

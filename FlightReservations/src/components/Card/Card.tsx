@@ -4,12 +4,12 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {styles} from './styleCard';
 
 interface props {
-  estateOrigin: string;
-  estateDestination: string;
-  countryOrigin: string;
-  countryDestination: string;
-  date: string;
-  tickets: string;
+  estateOrigin?: string;
+  estateDestination?: string;
+  countryOrigin?: string;
+  countryDestination?: string;
+  date?: string;
+  tickets?: string;
 }
 
 export const Card = ({
@@ -33,7 +33,7 @@ export const Card = ({
       </View>
       <View style={styles.containerDate}>
         <Text style={styles.tertiaryText}>{date}</Text>
-        <Text style={styles.tertiaryText}>{tickets} passenger</Text>
+        <Text style={styles.tertiaryText}>{tickets}</Text>
       </View>
     </View>
   );

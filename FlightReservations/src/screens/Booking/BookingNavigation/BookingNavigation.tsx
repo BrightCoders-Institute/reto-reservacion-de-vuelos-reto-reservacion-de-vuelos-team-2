@@ -6,25 +6,27 @@ import {Date} from '../views/Date/Date';
 import {Passengers} from '../views/Passengers/Passengers';
 import {Results} from '../views/Results/Results';
 
-const Stack = createStackNavigator();
+const Booking = createStackNavigator();
 
 function BookingNavigation() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="From"
-        component={From}
-        options={{title: 'Booking Flight'}}
-      />
-      <Stack.Screen name="To" component={To} options={{title: ''}} />
-      <Stack.Screen name="Date" component={Date} options={{title: ''}} />
-      <Stack.Screen
+    <Booking.Navigator>
+      <Booking.Screen name="From" component={From} options={{title: ''}} />
+      <Booking.Screen name="To" component={To} options={{title: ''}} />
+      <Booking.Screen name="Date" component={Date} options={{title: ''}} />
+      <Booking.Screen
         name="Passengers"
         component={Passengers}
         options={{title: ''}}
       />
-      <Stack.Screen name="Results" component={Results} options={{title: ''}} />
-    </Stack.Navigator>
+      <Booking.Screen
+        name="Results"
+        component={Results}
+        options={{
+          title: '',
+        }}
+      />
+    </Booking.Navigator>
   );
 }
 

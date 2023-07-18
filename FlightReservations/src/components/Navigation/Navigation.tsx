@@ -1,9 +1,9 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Login} from '../../screens/Login/Login';
 import {MyFlight} from '../../screens/MyFlight/MyFlight';
-import {Booking} from '../../screens/Booking/Booking';
-import {Register} from '../../screens/Register/Register';
+import Login from '../../screens/Login/Login';
+import Register from '../../screens/Register/Register';
+import BookingNavigation from '../../screens/Booking/BookingNavigation/BookingNavigation';
 
 const Stack = createStackNavigator();
 
@@ -13,9 +13,7 @@ export const Navigation = () => {
       initialRouteName="Login"
       screenOptions={{
         headerStyle: {
-          // *Para quietar sombra en header ANDROID
           elevation: 0,
-          //  *Para quietar sombra en header IOS
           shadowColor: 'transparent',
         },
         cardStyle: {
@@ -29,7 +27,7 @@ export const Navigation = () => {
       />
       <Stack.Screen
         name="Booking"
-        component={Booking}
+        component={BookingNavigation}
         options={{headerShown: false}}
       />
       <Stack.Screen

@@ -44,16 +44,7 @@ export const Form = ({navigation}: NavigationType) => {
             navigation,
           );
         }}>
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleSubmit,
-          dirty,
-
-          /* and other goodies */
-        }) => (
+        {({values, errors, touched, handleChange, handleSubmit, dirty}) => (
           <>
             <View style={styles.subTitleContainer}>
               <SubTitle isRequired={false}>

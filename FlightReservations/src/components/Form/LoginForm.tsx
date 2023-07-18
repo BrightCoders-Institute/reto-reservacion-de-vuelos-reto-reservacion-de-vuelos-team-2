@@ -11,6 +11,8 @@ import {Input} from '../Input/Input';
 import {NavigationType} from '../../../types/NavigationType';
 import {signIn} from '../../auth/SignIn';
 
+import {useNavigation} from '@react-navigation/native';
+
 const validatSchema = Yup.object().shape({
   password: Yup.string().required('Password invalid'),
   email: Yup.string().email('Invalid email').required('Required'),

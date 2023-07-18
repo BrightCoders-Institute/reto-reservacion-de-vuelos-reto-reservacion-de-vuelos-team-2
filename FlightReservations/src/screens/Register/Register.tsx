@@ -7,7 +7,7 @@ import {styles} from './RegisterStyles';
 import {googleAuth} from '../../auth/SignInWithGoogle';
 import {NavigationType} from '../../../types/NavigationType';
 
-export const Register = ({navigation}: NavigationType) => {
+const Register = ({navigation}: NavigationType) => {
   return (
     <>
       <Title title="Sign Up" />
@@ -30,3 +30,5 @@ export const Register = ({navigation}: NavigationType) => {
     </>
   );
 };
+
+export default Register;

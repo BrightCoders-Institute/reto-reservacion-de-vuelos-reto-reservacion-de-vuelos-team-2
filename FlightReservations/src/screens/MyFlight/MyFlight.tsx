@@ -5,7 +5,21 @@ import {Card} from '../../components/Card/Card';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './styleMyflights';
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
+const collectionRef = firestore().collection('Flights');
+collectionRef
+  .get()
+  .then(querySnapshot => {
+    querySnapshot.forEach(documentSnapshot => {
+      const data = documentSnapshot.data();
+      console.log('Datos del documento:', data);
+    });
+  })
+  .catch(error => {
+    console.log('Error al obtener los datos de la colección:', error);
+  });
 const DATAEXAMPLE = [
   {
     id: '1',
@@ -17,8 +31,10 @@ const DATAEXAMPLE = [
     tickets: '2',
   },
 ];
-
 export const MyFlight = () => {
+  const user = auth().currentUser;
+  console.log('user', user);
+
   const navigation = useNavigation();
   return (
     <>

@@ -7,29 +7,39 @@ import BookingNavigation from '../../screens/Booking/BookingNavigation/BookingNa
 
 const Stack = createStackNavigator();
 
-function Navigation() {
+export const Navigation = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Group>
-        <Stack.Screen name="Login" component={Login} options={{title: ''}} />
-        <Stack.Screen
-          name="Register"
-          component={Register}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="MyFlight"
-          component={MyFlight}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Booking"
-          component={BookingNavigation}
-          options={{headerShown: false}}
-        />
-      </Stack.Group>
+    <Stack.Navigator
+      initialRouteName="Login"
+      screenOptions={{
+        headerStyle: {
+          elevation: 0,
+          shadowColor: 'transparent',
+        },
+        cardStyle: {
+          backgroundColor: 'white',
+        },
+      }}>
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Booking"
+        component={BookingNavigation}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MyFlight"
+        component={MyFlight}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
-}
-
-export default Navigation;
+};

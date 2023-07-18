@@ -1,11 +1,11 @@
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import {Alert} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-const navigation = useNavigation();
+import {NavigationType} from '../../types/NavigationType';
 
 export const addUserInfo = (
   {uid, displayName, email}: FirebaseAuthTypes.User,
+  navigation: NavigationType,
   name?: string,
 ) => {
   if (name !== undefined) displayName = name;
@@ -20,7 +20,7 @@ export const addUserInfo = (
     })
     .then(() => {
       Alert.alert('User added succesfully');
-      navigation.navigate('Login');
+      navigation.navigate('MyFlight');
     })
     .catch(error => console.log(error));
 };

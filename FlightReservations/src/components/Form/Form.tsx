@@ -2,15 +2,15 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {styles} from './FormStyles';
 import {Button} from '../Button/Button';
-import {useNavigation} from '@react-navigation/native';
 
 import * as Yup from 'yup';
-import {Formik, useFormik} from 'formik';
+import {Formik} from 'formik';
 import {Title} from '../Title/Title';
 import {SubTitle} from '../SubTitle/SubTitle';
 import {Input} from '../Input/Input';
 import {Checkbox} from '../Checkbox/Checkbox';
 import {signup} from '../../auth/SignUp';
+import {NavigationType} from '../../../types/NavigationType';
 
 const validatSchema = Yup.object().shape({
   password: Yup.string()
@@ -22,8 +22,7 @@ const validatSchema = Yup.object().shape({
   checkbox: Yup.boolean().required(),
 });
 
-export const Form = () => {
-  const navigation = useNavigation();
+export const Form = ({navigation}: NavigationType) => {
   const handleCheckboxChange = (checked: boolean) => {};
   return (
     <View>
@@ -35,25 +34,17 @@ export const Form = () => {
           checkbox: false,
         }}
         validationSchema={validatSchema}
-        onSubmit={values => {
-          signup({
-            email: values.email,
-            password: values.password,
-            name: values.firstName,
-          });
-
-          navigation.navigate('MyFlight');
+        onSubmit={async values => {
+          await signup(
+            {
+              email: values.email,
+              password: values.password,
+              name: values.firstName,
+            },
+            navigation,
+          );
         }}>
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleSubmit,
-          dirty,
-
-          /* and other goodies */
-        }) => (
+        {({values, errors, touched, handleChange, handleSubmit, dirty}) => (
           <>
             <View style={styles.subTitleContainer}>
               <SubTitle isRequired={false}>

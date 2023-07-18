@@ -1,28 +1,40 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
+import {MyFlight} from '../../screens/MyFlight/MyFlight';
 import Login from '../../screens/Login/Login';
-import MyFlight from '../../screens/MyFlight/MyFlight';
-import Booking from '../../screens/Booking/Booking';
 import Register from '../../screens/Register/Register';
+import BookingNavigation from '../../screens/Booking/BookingNavigation/BookingNavigation';
 
 const Stack = createStackNavigator();
 
-function Navigation() {
+export const Navigation = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      initialRouteName="Login"
+      screenOptions={{
+        headerStyle: {
+          elevation: 0,
+          shadowColor: 'transparent',
+        },
+        cardStyle: {
+          backgroundColor: 'white',
+        },
+      }}>
       <Stack.Screen
-        name="Register"
-        component={Register}
+        name="Login"
+        component={Login}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="Login" component={Login} options={{title: ''}} />
+      <Stack.Screen
+        name="Booking"
+        component={BookingNavigation}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="MyFlight"
         component={MyFlight}
         options={{title: ''}}
       />
-      <Stack.Screen name="Booking" component={Booking} options={{title: ''}} />
     </Stack.Navigator>
   );
-}
-export default Navigation;
+};

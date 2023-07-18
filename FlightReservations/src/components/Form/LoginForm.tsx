@@ -8,6 +8,9 @@ import {Formik} from 'formik';
 import {Title} from '../Title/Title';
 import {SubTitle} from '../SubTitle/SubTitle';
 import {Input} from '../Input/Input';
+import {NavigationType} from '../../../types/NavigationType';
+import {signIn} from '../../auth/SignIn';
+
 import {useNavigation} from '@react-navigation/native';
 
 const validatSchema = Yup.object().shape({
@@ -16,14 +19,21 @@ const validatSchema = Yup.object().shape({
   checkbox: Yup.boolean().required(),
 });
 
-export const Form = () => {
-  const navigation = useNavigation();
+export const LoginForm = ({navigation}: NavigationType) => {
   return (
     <View>
       <Formik
         initialValues={{email: '', password: '', checkbox: false}}
         validationSchema={validatSchema}
-        onSubmit={values => navigation.navigate('MyFlight')}>
+        onSubmit={async values => {
+          await signIn(
+            {
+              email: values.email,
+              password: values.password,
+            },
+            navigation,
+          );
+        }}>
         {({values, errors, touched, handleChange, handleSubmit, dirty}) => (
           <>
             <View style={styles.subTitleContainer}>

@@ -1,25 +1,29 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {Title} from '../../components/Title/Title';
-import {Form} from '../../components/Form/LoginForm';
+import {LoginForm} from '../../components/Form/LoginForm';
 import {Button} from '../../components/Button/Button';
 import {styles} from './LoginStyles';
-import {useNavigation} from '@react-navigation/native';
+import {googleAuth} from '../../auth/SignInWithGoogle';
+import {NavigationType} from '../../../types/NavigationType';
 
-export const Login = () => {
-  const navigation = useNavigation();
+const Login = ({navigation}: NavigationType) => {
   return (
     <>
       <Title title="Log In" />
 
-      <Form />
+      <LoginForm navigation={navigation} />
 
       <Text style={styles.text}>or</Text>
 
-      <Button title="Log in with Google" isGoogle={true} />
+      <Button
+        title="Sign up with Google"
+        isGoogle={true}
+        onPress={() => googleAuth(navigation)}
+      />
 
       <View style={styles.containerLogin}>
-        <Text>Don't have an account?</Text>
+        <Text style={styles.text}>Don't have an account?</Text>
         <TouchableOpacity
           activeOpacity={0.6}
           onPress={() => navigation.navigate('Register')}>

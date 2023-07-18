@@ -1,14 +1,22 @@
+import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import React from 'react';
-import 'react-native-gesture-handler';
-import {NavigationContainer} from '@react-navigation/native';
-import Navigation from './src/components/Navigation/Navigation';
 import {store} from './src/store/store';
 import {Provider} from 'react-redux';
+import {Navigation} from './src/components/Navigation/Navigation';
+
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: 'white',
+    text: 'black',
+  },
+};
 
 export default function App() {
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer theme={MyTheme}>
         <Navigation />
       </NavigationContainer>
     </Provider>

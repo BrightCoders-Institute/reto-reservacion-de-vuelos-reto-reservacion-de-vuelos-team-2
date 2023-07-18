@@ -1,26 +1,57 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import {Button} from '../../../../components/Button/Button';
 import {useNavigation} from '@react-navigation/native';
 import {BookingTitle} from '../../../../components/BookingTitle/BookingTitle';
-import {BookingCard} from '../../../../components/BookingCard';
 import {BottomButton} from '../../../../components/BottomButton/BottomButton';
 import SelectDropdown from 'react-native-select-dropdown';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {styles} from './ToStyles';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  setCountryDestination,
+  setEstateDestination,
+} from '../../../../store/dataSlice';
+import {RootState} from '../../../../store/reducers';
+import {Card} from '../../../../components/Card/Card';
+import {placesData} from '../../../../db/placesData';
 
 export const To = () => {
   const navigation = useNavigation();
-  const countries = ['Egypt', 'Canada', 'Australia', 'Ireland'];
+  const labelsArray = placesData.map(place => place.label);
+
+  const dispatch = useDispatch();
+  const {
+    estateOrigin,
+    estateDestination,
+    countryOrigin,
+    countryDestination,
+    date,
+    tickets,
+  } = useSelector((state: RootState) => state.data);
+
   return (
     <View style={{flex: 1}}>
-      <BookingCard />
+      <Card
+        estateOrigin={estateOrigin}
+        estateDestination={estateDestination}
+        countryOrigin={countryOrigin}
+        countryDestination={countryDestination}
+        date={date}
+        tickets={tickets}
+      />
       <BookingTitle title="Where will you be flying to?" width="80%" />
       <View style={styles.containerDropDown}>
         <SelectDropdown
-          data={countries}
+          data={labelsArray}
           onSelect={(selectedItem, index) => {
-            console.log(selectedItem, index);
+            const place = placesData.find(item => item.label === selectedItem);
+            const {
+              value: {short, country},
+            } = place;
+
+            dispatch(setEstateDestination(short));
+            dispatch(setCountryDestination(country));
           }}
           defaultButtonText={'Select location'}
           buttonTextAfterSelection={(selectedItem, index) => {

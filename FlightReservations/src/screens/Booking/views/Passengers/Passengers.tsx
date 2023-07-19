@@ -40,10 +40,10 @@ export const Passengers = () => {
           pickerData={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
           onValueChange={(value: string) => {
             if (value === '1') {
-              dispatch(setTickets(value.concat(' passenger')));
+              dispatch(setTickets(value));
               return;
             }
-            dispatch(setTickets(value.concat(' passengers')));
+            dispatch(setTickets(value));
           }}
         />
       </View>

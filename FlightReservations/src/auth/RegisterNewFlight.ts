@@ -11,6 +11,20 @@ interface NewFlight {
   tickets: string;
 }
 
+function generarID(): string {
+  const caracteres =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const longitud = 8;
+  let id = '';
+
+  for (let i = 0; i < longitud; i++) {
+    const indiceAleatorio = Math.floor(Math.random() * caracteres.length);
+    id += caracteres.charAt(indiceAleatorio);
+  }
+
+  return id;
+}
+
 export const registerFlight = async (props: NewFlight) => {
   const user = auth().currentUser;
 
@@ -22,6 +36,7 @@ export const registerFlight = async (props: NewFlight) => {
     date: props.date || '',
     tickets: props.tickets || '',
     user_id: user?.uid || '',
+    identifier: generarID() || '',
   };
 
   try {

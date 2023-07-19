@@ -4,8 +4,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {styles} from './styleCard';
 
 interface props {
-  stateOrigin?: string;
-  stateDestination?: string;
+  estateOrigin?: string;
+  estateDestination?: string;
   countryOrigin?: string;
   countryDestination?: string;
   date?: string;
@@ -13,19 +13,27 @@ interface props {
 }
 
 export const Card = ({
-  stateOrigin,
-  stateDestination,
+  estateOrigin,
+  estateDestination,
   countryOrigin,
   countryDestination,
   date,
   tickets,
 }: props) => {
+  const ticketsNumber = () => {
+    if (tickets !== '') {
+      if (tickets === '1') {
+        return ' passenger';
+      }
+      return ' passengers';
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.containerTitle}>
-        <Text style={styles.primaryText}>{stateOrigin}</Text>
+        <Text style={styles.primaryText}>{estateOrigin}</Text>
         <Icon name="airplane-landing" size={30} color="#5974F5" />
-        <Text style={styles.primaryText}>{stateDestination}</Text>
+        <Text style={styles.primaryText}>{estateDestination}</Text>
       </View>
       <View style={styles.containerSubTitle}>
         <Text style={styles.SecondaryText}>{countryOrigin}</Text>
@@ -33,7 +41,10 @@ export const Card = ({
       </View>
       <View style={styles.containerDate}>
         <Text style={styles.tertiaryText}>{date}</Text>
-        <Text style={styles.tertiaryText}>{tickets}</Text>
+        <Text style={styles.tertiaryText}>
+          {tickets}
+          {ticketsNumber()}
+        </Text>
       </View>
     </View>
   );

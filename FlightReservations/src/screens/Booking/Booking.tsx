@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import BookingNavigation from './BookingNavigation/BookingNavigation';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-export const Booking = () => {
+const Booking = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <NavigationContainer independent={true}>
@@ -12,3 +12,5 @@ export const Booking = () => {
     </SafeAreaView>
   );
 };
+
+export default Booking;

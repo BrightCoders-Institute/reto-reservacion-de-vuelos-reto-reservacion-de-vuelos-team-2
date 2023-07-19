@@ -20,6 +20,14 @@ export const Card = ({
   date,
   tickets,
 }: props) => {
+  const ticketsNumber = () => {
+    if (tickets !== '') {
+      if (tickets === '1') {
+        return ' passenger';
+      }
+      return ' passengers';
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.containerTitle}>
@@ -33,7 +41,10 @@ export const Card = ({
       </View>
       <View style={styles.containerDate}>
         <Text style={styles.tertiaryText}>{date}</Text>
-        <Text style={styles.tertiaryText}>{tickets}</Text>
+        <Text style={styles.tertiaryText}>
+          {tickets}
+          {ticketsNumber()}
+        </Text>
       </View>
     </View>
   );

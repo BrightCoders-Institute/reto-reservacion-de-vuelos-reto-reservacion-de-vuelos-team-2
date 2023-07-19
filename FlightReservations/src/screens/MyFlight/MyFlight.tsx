@@ -1,98 +1,46 @@
-import React from 'react';
-import {FlatList, TouchableOpacity, StyleSheet} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {FlatList, TouchableOpacity} from 'react-native';
 import {Title} from '../../components/Title/Title';
 import {Card} from '../../components/Card/Card';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
-
-const DATAEXAMPLE = [
-  {
-    id: '1',
-    estateOrigin: 'beg',
-    estateDestination: 'ams',
-    countryOrigin: 'Serbia',
-    countryDestination: 'Netherlands',
-    date: 'September 3, 2020',
-    tickets: '2',
-  },
-  {
-    id: '2',
-    estateOrigin: 'beg',
-    estateDestination: 'ams',
-    countryOrigin: 'Serbia',
-    countryDestination: 'Netherlands',
-    date: 'September 3, 2020',
-    tickets: '2',
-  },
-  {
-    id: '3',
-    estateOrigin: 'beg',
-    estateDestination: 'ams',
-    countryOrigin: 'Serbia',
-    countryDestination: 'Netherlands',
-    date: 'September 3, 2020',
-    tickets: '2',
-  },
-  {
-    id: '4',
-    estateOrigin: 'beg',
-    estateDestination: 'ams',
-    countryOrigin: 'Serbia',
-    countryDestination: 'Netherlands',
-    date: 'September 3, 2020',
-    tickets: '2',
-  },
-  {
-    id: '6',
-    estateOrigin: 'beg',
-    estateDestination: 'ams',
-    countryOrigin: 'Serbia',
-    countryDestination: 'Netherlands',
-    date: 'September 3, 2020',
-    tickets: '2',
-  },
-  {
-    id: '7',
-    estateOrigin: 'beg',
-    estateDestination: 'ams',
-    countryOrigin: 'Serbia',
-    countryDestination: 'Netherlands',
-    date: 'September 3, 2020',
-    tickets: '2',
-  },
-  {
-    id: '8',
-    estateOrigin: 'beg',
-    estateDestination: 'ams',
-    countryOrigin: 'Serbia',
-    countryDestination: 'Netherlands',
-    date: 'September 3, 2020',
-    tickets: '2',
-  },
-  {
-    id: '9',
-    estateOrigin: 'beg',
-    estateDestination: 'ams',
-    countryOrigin: 'Serbia',
-    countryDestination: 'Netherlands',
-    date: 'September 3, 2020',
-    tickets: '2',
-  },
-];
+import {styles} from './styleMyflights';
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
 export const MyFlight = () => {
+  const [flights, setFlights] = useState([]);
   const navigation = useNavigation();
+  const user = auth().currentUser;
+  console.log('user', user.uid);
+  const collectionRef = firestore().collection('Flights');
+  collectionRef
+    .get()
+    .then(querySnapshot => {
+      const data = [];
+      querySnapshot.forEach(documentSnapshot => {
+        data.push(documentSnapshot.data());
+      });
+      console.log('data', data);
 
+      const dataFlights = data.filter(item => item.user_id === user.uid);
+      console.log('arrayFiltrado2', dataFlights);
+
+      setFlights(dataFlights);
+    })
+    .catch(error => {
+      console.log('Error al obtener los datos de la colección:', error);
+    });
   return (
     <>
       <Title title="My Flights" />
       <FlatList
-        data={DATAEXAMPLE}
-        keyExtractor={item => item.id}
+        data={flights}
+        keyExtractor={item => item.identifier}
         renderItem={({item}) => (
           <Card
-            estateOrigin={item.estateOrigin}
-            estateDestination={item.estateDestination}
+            estateOrigin={item.stateOrigin}
+            estateDestination={item.stateDestination}
             countryOrigin={item.countryOrigin}
             countryDestination={item.countryDestination}
             date={item.date}
@@ -109,14 +57,4 @@ export const MyFlight = () => {
     </>
   );
 };
-
-export const styles = StyleSheet.create({
-  bntFloating: {
-    backgroundColor: '#5974F5',
-    position: 'absolute',
-    borderRadius: 50,
-    padding: 10,
-    bottom: 15,
-    left: '40%',
-  },
-});
+export default MyFlight;

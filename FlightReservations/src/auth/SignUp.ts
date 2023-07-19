@@ -3,6 +3,7 @@ import {Alert} from 'react-native';
 import {addUserInfo} from '../db/AddUserInfo';
 import {NavigationType} from '../../types/NavigationType';
 
+
 interface SignUpInterface {
   email: string;
   password: string;
@@ -17,8 +18,10 @@ export const signup = async (
     const {user} = await auth().createUserWithEmailAndPassword(email, password);
     addUserInfo(user, navigation, name);
   } catch (error) {
+    
     if (error.code === 'auth/email-already-in-use') {
       Alert.alert('The email address is already in use!');
+     
     }
 
     if (error.code === 'auth/invalid-email') {

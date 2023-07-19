@@ -33,7 +33,7 @@ export const Navigation = () => {
       <Stack.Screen
         name="MyFlight"
         component={MyFlight}
-        options={{headerShown: false}}
+        options={{title: ''}}
       />
       <Stack.Screen
         name="Register"
